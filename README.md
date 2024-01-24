@@ -57,8 +57,30 @@ urlpatterns = [
 ]
 ```
 
-Запускаем приложение и переходим по пути get-current-usd/
+
+Добавим функционан в apps.py, который позволяет единожды при запуске программы отработать некоторые функции
+```bash
+from django.apps import AppConfig
+
+from .views import *
+
+
+class PhotoAppConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'photo_app'
+    verbose_name = 'Тестовое задание'
+
+    def ready(self):
+        save_xml()
+        parsing_xml()
+        json_file()
+```
+
+
+Запускаем приложение и переходим по пути get-current-usd/ 
+При первом запуске появится 2 файла: file.xml и output.json в папке проекта.
 
 ```bash
 python manage.py runserver
 ```
+
