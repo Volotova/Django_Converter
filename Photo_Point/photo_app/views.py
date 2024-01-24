@@ -4,7 +4,7 @@ import json
 
 from datetime import date
 from bs4 import BeautifulSoup
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpRequest
 
 
 def api_url():
@@ -65,4 +65,3 @@ def show_json(request):
         json_data = json.load(file)
 
     return JsonResponse(json_data)
-
